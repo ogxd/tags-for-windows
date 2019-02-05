@@ -1,14 +1,14 @@
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\bin\Debug\LabelsForWindows.dll
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\bin\Debug\SharpShell.dll
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\bin\Debug\Apex.WinForms.dll
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\bin\Debug\ServerManager.exe
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\bin\Debug\ServerManager.pdb
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\bin\Debug\SharpShell.pdb
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\bin\Debug\SharpShell.xml
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\obj\Debug\LabelsForWindows.csprojAssemblyReference.cache
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\obj\Debug\LabelsForWindows.Properties.Resources.resources
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\obj\Debug\LabelsForWindows.csproj.GenerateResource.cache
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\obj\Debug\LabelsForWindows.csproj.CoreCompileInputs.cache
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\obj\Debug\LabelsForWindows.csproj.CopyComplete
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\obj\Debug\LabelsForWindows.dll
-C:\Users\lan pc\source\repos\LabelsForWindows\LabelsForWindows\obj\Debug\LabelsForWindows.pdb
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\bin\Debug\LabelsForWindows.dll
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\bin\Debug\LabelsForWindows.pdb
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\bin\Debug\SharpShell.dll
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\bin\Debug\SharpShell.xml
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\obj\Debug\LabelsForWindows.Properties.Resources.resources
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\obj\Debug\LabelsForWindows.csproj.GenerateResource.cache
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\obj\Debug\LabelsForWindows.csproj.CoreCompileInputs.cache
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\obj\Debug\LabelsForWindows.csproj.CopyComplete
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\obj\Debug\LabelsForWindows.dll
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\obj\Debug\LabelsForWindows.pdb
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\bin\Debug\Apex.WinForms.dll
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\bin\Debug\ServerManager.exe
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\bin\Debug\ServerManager.pdb
+C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\bin\Debug\SharpShell.pdb

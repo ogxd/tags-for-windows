@@ -4,22 +4,15 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace LabelsForWindows
-{
+namespace ogxd {
+
+    [ComVisible(true)]
+    [Guid("f694f487-881a-449e-9120-a49671f3d99e")]
     public class LabelsForWindows : SharpIconOverlayHandler {
 
         protected override bool CanShowOverlay(string path, FILE_ATTRIBUTE attributes) {
-            return true;
-            //try {
-            //    //  Get the file attributes.
-            //    var fileAttributes = new FileInfo(path);
-
-            //    //  Return true if the file is read only, meaning we'll show the overlay.
-            //    return fileAttributes.IsReadOnly;
-            //}
-            //catch (Exception) {
-            //    return false;
-            //}
+            return path.Contains(".pdf");
+            //return Path.GetFileName(path).ToLower().Contains("a");
         }
 
         protected override System.Drawing.Icon GetOverlayIcon() {
