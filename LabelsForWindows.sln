@@ -3,13 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabelsForWindows", "LabelsForWindows\LabelsForWindows.csproj", "{F694F487-881A-449E-9120-A49671F3D99E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{51141F21-E729-43A2-B41B-A3AE873D7AF1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyInspector", "AssemblyInspector\AssemblyInspector.csproj", "{E1C406F2-3530-45BC-90E1-7FEAD384980E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadOnlyFileIconOverlayHandler", "ReadOnlyFileIconOverlayHandler\ReadOnlyFileIconOverlayHandler.csproj", "{31EFBD02-1FCC-4EC6-A7F3-5A04BE4AE806}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabelsForWindows", "LabelsForWindows\LabelsForWindows.csproj", "{31EFBD02-1FCC-4EC6-A7F3-5A04BE4AE806}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpShell", "SharpShell\SharpShell.csproj", "{B5D5F670-BFBA-4D09-91C6-74BB12B7EDD4}"
 EndProject
@@ -23,30 +17,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F694F487-881A-449E-9120-A49671F3D99E}.Debug|Any CPU.ActiveCfg = x64|Any CPU
-		{F694F487-881A-449E-9120-A49671F3D99E}.Debug|Any CPU.Build.0 = x64|Any CPU
-		{F694F487-881A-449E-9120-A49671F3D99E}.Debug|x64.ActiveCfg = x64|Any CPU
-		{F694F487-881A-449E-9120-A49671F3D99E}.Debug|x64.Build.0 = x64|Any CPU
-		{F694F487-881A-449E-9120-A49671F3D99E}.Debug|x86.ActiveCfg = x64|Any CPU
-		{F694F487-881A-449E-9120-A49671F3D99E}.Debug|x86.Build.0 = x64|Any CPU
-		{F694F487-881A-449E-9120-A49671F3D99E}.Release|Any CPU.ActiveCfg = x64|Any CPU
-		{F694F487-881A-449E-9120-A49671F3D99E}.Release|Any CPU.Build.0 = x64|Any CPU
-		{F694F487-881A-449E-9120-A49671F3D99E}.Release|x64.ActiveCfg = x64|Any CPU
-		{F694F487-881A-449E-9120-A49671F3D99E}.Release|x64.Build.0 = x64|Any CPU
-		{F694F487-881A-449E-9120-A49671F3D99E}.Release|x86.ActiveCfg = x64|Any CPU
-		{F694F487-881A-449E-9120-A49671F3D99E}.Release|x86.Build.0 = x64|Any CPU
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E}.Debug|x64.Build.0 = Debug|Any CPU
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E}.Debug|x86.Build.0 = Debug|Any CPU
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E}.Release|x64.ActiveCfg = Release|Any CPU
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E}.Release|x64.Build.0 = Release|Any CPU
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E}.Release|x86.ActiveCfg = Release|Any CPU
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E}.Release|x86.Build.0 = Release|Any CPU
 		{31EFBD02-1FCC-4EC6-A7F3-5A04BE4AE806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{31EFBD02-1FCC-4EC6-A7F3-5A04BE4AE806}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31EFBD02-1FCC-4EC6-A7F3-5A04BE4AE806}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -74,9 +44,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{E1C406F2-3530-45BC-90E1-7FEAD384980E} = {51141F21-E729-43A2-B41B-A3AE873D7AF1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8E12D7AF-41D3-4885-B0BB-2EA60909A541}

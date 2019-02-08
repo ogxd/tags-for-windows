@@ -1,81 +1,124 @@
-﻿using SharpShell.Attributes;
-using SharpShell.SharpContextMenu;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SharpShell.Attributes;
+using SharpShell.SharpContextMenu;
+using System.Linq;
+using System.Drawing;
 
-namespace ogxd {
+namespace LabelsForWindows {
 
-    /// <summary>
-    /// The CountLinesExtensions is an example shell context menu extension,
-    /// implemented with SharpShell. It adds the command 'Count Lines' to text
-    /// files.
-    /// </summary>
     [ComVisible(true)]
     [COMServerAssociation(AssociationType.AllFiles)]
     [COMServerAssociation(AssociationType.Directory)]
-    [Guid("f694f487-881a-449e-9120-a49671f3d99e")]
-    public class CountLinesExtension : SharpContextMenu {
-        /// <summary>
-        /// Determines whether this instance can a shell
-        /// context show menu, given the specified selected file list.
-        /// </summary>
-        /// <returns>
-        /// <c>true</c> if this instance should show a shell context
-        /// menu for the specified file list; otherwise, <c>false</c>.
-        /// </returns>
+    public class ContextMenu : SharpContextMenu
+    {
+        private ContextMenuStrip menu = new ContextMenuStrip();
+
         protected override bool CanShowMenu() {
-            //  We always show the menu.
-            return true;
+           
+            if (SelectedItemPaths.Count() == 1)
+            {
+                this.UpdateMenu();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        /// <summary>
-        /// Creates the context menu. This can be a single menu item or a tree of them.
-        /// </summary>
-        /// <returns>
-        /// The context menu for the shell context menu.
-        /// </returns>
         protected override ContextMenuStrip CreateMenu() {
-            //  Create the menu strip.
-            var menu = new ContextMenuStrip();
 
-            //  Create a 'count lines' item.
-            var itemCountLines = new ToolStripMenuItem {
-                Text = "Count Lines...",
-                //Image = Properties.Resources.Green
-            };
+            menu.Items.Clear();
+            FileAttributes attr = File.GetAttributes(SelectedItemPaths.First());
 
-            //  When we click, we'll count the lines.
-            itemCountLines.Click += (sender, args) => CountLines();
+            if (attr.HasFlag(FileAttributes.Directory))  {
+                this.createSubMenus();
+            } else {
+                this.createSubMenus();
+            }
 
-            //  Add the item to the context menu.
-            menu.Items.Add(itemCountLines);
-
-            //  Return the menu.
             return menu;
         }
 
-        /// <summary>
-        /// Counts the lines in the selected files.
-        /// </summary>
-        private void CountLines() {
-            //  Builder for the output.
-            var builder = new StringBuilder();
+        private void UpdateMenu() {
+            menu.Dispose();
+            menu = CreateMenu();
+        }
 
-            //  Go through each file.
-            foreach (var filePath in SelectedItemPaths) {
-                //  Count the lines.
-                builder.AppendLine(string.Format("{0} - {1} Lines",
-                  Path.GetFileName(filePath), File.ReadAllLines(filePath).Length));
+        protected void createSubMenus() {
+
+            var mainMenu = new ToolStripMenuItem {
+                Text = "Labels",
+            };
+
+            var menuGreen = new ToolStripMenuItem {
+                Text = "Green",
+                Image = Properties.Resources.green32x32
+            };
+
+            var menuYellow = new ToolStripMenuItem {
+                Text = "Yellow",
+                Image = Properties.Resources.yellow32x32
+            };
+
+            var menuRed = new ToolStripMenuItem
+            {
+                Text = "Red",
+                Image = Properties.Resources.red32x32
+            };
+
+            var menuPurple = new ToolStripMenuItem
+            {
+                Text = "Purple",
+                Image = Properties.Resources.purple32x32
+            };
+
+            var menuBlue = new ToolStripMenuItem
+            {
+                Text = "Blue",
+                Image = Properties.Resources.blue32x32
+            };
+
+            var menuNone = new ToolStripMenuItem {
+                Text = "None",
+            };
+
+            menuGreen.Click += (sender, args) => assignIcon(Properties.Resources.green_ico);
+            menuYellow.Click += (sender, args) => assignIcon(Properties.Resources.yellow_ico);
+            menuRed.Click += (sender, args) => assignIcon(Properties.Resources.red_ico);
+            menuPurple.Click += (sender, args) => assignIcon(Properties.Resources.purple_ico);
+            menuBlue.Click += (sender, args) => assignIcon(Properties.Resources.blue_ico);
+            menuNone.Click += (sender, args) => unassignIcon();
+
+            mainMenu.DropDownItems.Add(menuGreen);
+            mainMenu.DropDownItems.Add(menuYellow);
+            mainMenu.DropDownItems.Add(menuRed);
+            mainMenu.DropDownItems.Add(menuPurple);
+            mainMenu.DropDownItems.Add(menuBlue);
+            mainMenu.DropDownItems.Add(menuNone);
+
+            menu.Items.Clear();
+            menu.Items.Add(mainMenu);
+        }
+
+        private void assignIcon(Icon icon) {
+            foreach (string path in SelectedItemPaths) {
+                if (Manager.FilesToIcons.ContainsKey(path)) {
+                    Manager.FilesToIcons[path] = icon;
+                } else {
+                    Manager.FilesToIcons.Add(path, icon);
+                }
             }
+        }
 
-            //  Show the ouput.
-            MessageBox.Show(builder.ToString());
+        private void unassignIcon() {
+            foreach (string path in SelectedItemPaths) {
+                if (Manager.FilesToIcons.ContainsKey(path)) {
+                    Manager.FilesToIcons.Remove(path);
+                }
+            }
         }
     }
 }
