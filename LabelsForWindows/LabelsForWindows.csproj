@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextMenu.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="OverlayIconGreen.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

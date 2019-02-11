@@ -16,10 +16,7 @@ namespace LabelsForWindows {
         }
 
         protected override bool CanShowOverlay(string path, FILE_ATTRIBUTE attributes) {
-            if (Manager.FilesToIcons.ContainsKey(path)) {
-                return Manager.FilesToIcons[path] == Properties.Resources.red_ico;
-            }
-            return false;
+            return Manager.GetIcon(path) == "red";
         }
 
         protected override System.Drawing.Icon GetOverlayIcon() {

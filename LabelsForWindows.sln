@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabelsForWindows", "LabelsF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpShell", "SharpShell\SharpShell.csproj", "{B5D5F670-BFBA-4D09-91C6-74BB12B7EDD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{B5D5F670-BFBA-4D09-91C6-74BB12B7EDD4}.Release|x64.Build.0 = Release|Any CPU
 		{B5D5F670-BFBA-4D09-91C6-74BB12B7EDD4}.Release|x86.ActiveCfg = Release|Any CPU
 		{B5D5F670-BFBA-4D09-91C6-74BB12B7EDD4}.Release|x86.Build.0 = Release|Any CPU
+		{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}.Debug|x64.Build.0 = Debug|Any CPU
+		{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}.Debug|x86.Build.0 = Debug|Any CPU
+		{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}.Release|x64.ActiveCfg = Release|Any CPU
+		{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}.Release|x64.Build.0 = Release|Any CPU
+		{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}.Release|x86.ActiveCfg = Release|Any CPU
+		{2DE7B7C9-000A-4DB3-8501-38C8B6047E58}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

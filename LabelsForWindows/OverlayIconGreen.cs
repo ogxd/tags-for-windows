@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using SharpShell.Attributes;
 using SharpShell.Interop;
@@ -16,10 +17,7 @@ namespace LabelsForWindows {
         }
 
         protected override bool CanShowOverlay(string path, FILE_ATTRIBUTE attributes) {
-            if (Manager.FilesToIcons.ContainsKey(path)) {
-                return Manager.FilesToIcons[path] == Properties.Resources.green_ico;
-            }
-            return false;
+            return Manager.GetIcon(path) == "green";
         }
 
         protected override System.Drawing.Icon GetOverlayIcon() {

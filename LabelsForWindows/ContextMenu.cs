@@ -85,11 +85,11 @@ namespace LabelsForWindows {
                 Text = "None",
             };
 
-            menuGreen.Click += (sender, args) => assignIcon(Properties.Resources.green_ico);
-            menuYellow.Click += (sender, args) => assignIcon(Properties.Resources.yellow_ico);
-            menuRed.Click += (sender, args) => assignIcon(Properties.Resources.red_ico);
-            menuPurple.Click += (sender, args) => assignIcon(Properties.Resources.purple_ico);
-            menuBlue.Click += (sender, args) => assignIcon(Properties.Resources.blue_ico);
+            menuGreen.Click += (sender, args) => assignIcon("green");
+            menuYellow.Click += (sender, args) => assignIcon("yellow");
+            menuRed.Click += (sender, args) => assignIcon("red");
+            menuPurple.Click += (sender, args) => assignIcon("purple");
+            menuBlue.Click += (sender, args) => assignIcon("blue");
             menuNone.Click += (sender, args) => unassignIcon();
 
             mainMenu.DropDownItems.Add(menuGreen);
@@ -103,22 +103,18 @@ namespace LabelsForWindows {
             menu.Items.Add(mainMenu);
         }
 
-        private void assignIcon(Icon icon) {
+        private void assignIcon(string icon) {
             foreach (string path in SelectedItemPaths) {
-                if (Manager.FilesToIcons.ContainsKey(path)) {
-                    Manager.FilesToIcons[path] = icon;
-                } else {
-                    Manager.FilesToIcons.Add(path, icon);
-                }
+                Manager.AssignIcon(path, icon);
             }
+            Manager.Refresh();
         }
 
         private void unassignIcon() {
             foreach (string path in SelectedItemPaths) {
-                if (Manager.FilesToIcons.ContainsKey(path)) {
-                    Manager.FilesToIcons.Remove(path);
-                }
+                Manager.UnassignIcon(path);
             }
+            Manager.Refresh();
         }
     }
 }
