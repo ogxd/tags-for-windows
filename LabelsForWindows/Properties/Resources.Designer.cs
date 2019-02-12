@@ -63,16 +63,6 @@ namespace LabelsForWindows.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Blue {
-            get {
-                object obj = ResourceManager.GetObject("Blue", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Blue32x32 {
             get {
                 object obj = ResourceManager.GetObject("Blue32x32", resourceCulture);
@@ -87,16 +77,6 @@ namespace LabelsForWindows.Properties {
             get {
                 object obj = ResourceManager.GetObject("BlueIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Green {
-            get {
-                object obj = ResourceManager.GetObject("Green", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -123,16 +103,6 @@ namespace LabelsForWindows.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Purple {
-            get {
-                object obj = ResourceManager.GetObject("Purple", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Purple32x32 {
             get {
                 object obj = ResourceManager.GetObject("Purple32x32", resourceCulture);
@@ -153,16 +123,6 @@ namespace LabelsForWindows.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Red {
-            get {
-                object obj = ResourceManager.GetObject("Red", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Red32x32 {
             get {
                 object obj = ResourceManager.GetObject("Red32x32", resourceCulture);
@@ -177,16 +137,6 @@ namespace LabelsForWindows.Properties {
             get {
                 object obj = ResourceManager.GetObject("RedIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Yellow {
-            get {
-                object obj = ResourceManager.GetObject("Yellow", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
