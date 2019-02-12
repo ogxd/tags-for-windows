@@ -84,49 +84,49 @@
     <None Include="Key.snk" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\blue.png" />
+    <None Include="Resources\Blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\green.png" />
+    <None Include="Resources\Green.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\purple.png" />
+    <None Include="Resources\Purple.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\red.png" />
+    <None Include="Resources\Red.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\yellow.png" />
+    <None Include="Resources\Yellow.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\blue_ico.ico" />
+    <None Include="Resources\BlueIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\green_ico.ico" />
+    <None Include="Resources\PurpleIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\purple_ico.ico" />
+    <None Include="Resources\RedIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\red_ico.ico" />
+    <None Include="Resources\YellowIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\yellow_ico.ico" />
+    <None Include="Resources\Blue32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\blue32x32.png" />
+    <None Include="Resources\Green32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\green32x32.png" />
+    <None Include="Resources\Purple32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\purple32x32.png" />
+    <None Include="Resources\Red32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\red32x32.png" />
+    <None Include="Resources\Yellow32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\yellow32x32.png" />
+    <None Include="Resources\GreenIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

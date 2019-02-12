@@ -21,7 +21,7 @@ namespace LabelsForWindows {
         }
 
         protected override System.Drawing.Icon GetOverlayIcon() {
-            return Properties.Resources.green_ico;
+            return Properties.Resources.GreenIcon;
         }
     }
 }

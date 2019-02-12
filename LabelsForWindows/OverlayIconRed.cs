@@ -20,7 +20,7 @@ namespace LabelsForWindows {
         }
 
         protected override System.Drawing.Icon GetOverlayIcon() {
-            return Properties.Resources.red_ico;
+            return Properties.Resources.RedIcon;
         }
     }
 }

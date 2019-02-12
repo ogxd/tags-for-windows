@@ -48,9 +48,12 @@ namespace LabelsForWindows {
 
         private static string[] _CachedLines;
 
+        private static DateTime _LastUpdate;
+
         public static string GetIcon(string file) {
             file = file.ToLower().Replace(@"/", @"\").Replace(@"\\", @"\");
-            if (_CachedLines == null) {
+            if (_CachedLines == null || DateTime.UtcNow > _LastUpdate.AddSeconds(2)) {
+                _LastUpdate = DateTime.UtcNow;
                 if (File.Exists(CACHE)) {
                     _CachedLines = File.ReadAllLines(CACHE);
                 } else {
