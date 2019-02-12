@@ -1,3 +1,2 @@
-C:\Windows\Microsoft.NET\Framework64\v4.0.30319\RegAsm.exe "C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\bin\x64\LabelsForWindows.dll"
-C:\Windows\Microsoft.NET\Framework\v4.0.30319\RegAsm.exe "C:\Users\ogini\Code\Labels-For-Windows\LabelsForWindows\bin\x32\LabelsForWindows.dll"
-pause
+set path=%~dp0
+"%path%LabelsForWindows.Tools\bin\LabelsForWindows.Tools.exe" install register "%path%LabelsForWindows\bin\LabelsForWindows.dll"
