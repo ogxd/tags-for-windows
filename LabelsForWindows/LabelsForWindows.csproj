@@ -84,35 +84,48 @@
   <ItemGroup>
     <None Include="Key.snk" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\BlueIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\PurpleIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\RedIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\YellowIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Blue32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Green32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Purple32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Red32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Yellow32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GreenIcon.ico" />
+    <Content Include="Resources\Blue\Blue16.png" />
+    <Content Include="Resources\Green\Green16.png" />
+    <Content Include="Resources\Purple\Purple16.png" />
+    <Content Include="Resources\Red\Red16.png" />
+    <Content Include="Resources\Yellow\Yellow16.png" />
+    <Content Include="Resources\Blue\Blue20.png" />
+    <Content Include="Resources\Green\Green20.png" />
+    <Content Include="Resources\Purple\Purple20.png" />
+    <Content Include="Resources\Red\Red20.png" />
+    <Content Include="Resources\Yellow\Yellow20.png" />
+    <Content Include="Resources\Blue\Blue24.png" />
+    <Content Include="Resources\Green\Green24.png" />
+    <Content Include="Resources\Purple\Purple24.png" />
+    <Content Include="Resources\Red\Red24.png" />
+    <Content Include="Resources\Yellow\Yellow24.png" />
+    <Content Include="Resources\Blue\Blue28.png" />
+    <Content Include="Resources\Green\Green28.png" />
+    <Content Include="Resources\Purple\Purple28.png" />
+    <Content Include="Resources\Red\Red28.png" />
+    <Content Include="Resources\Yellow\Yellow28.png" />
+    <Content Include="Resources\Blue\Blue32.png" />
+    <Content Include="Resources\Green\Green32.png" />
+    <Content Include="Resources\Purple\Purple32.png" />
+    <Content Include="Resources\Red\Red32.png" />
+    <Content Include="Resources\Yellow\Yellow32.png" />
+    <Content Include="Resources\Blue\Blue36.png" />
+    <Content Include="Resources\Green\Green36.png" />
+    <Content Include="Resources\Purple\Purple36.png" />
+    <Content Include="Resources\Red\Red36.png" />
+    <Content Include="Resources\Yellow\Yellow36.png" />
+    <Content Include="Resources\Blue\Blue40.png" />
+    <Content Include="Resources\Green\Green40.png" />
+    <Content Include="Resources\Purple\Purple40.png" />
+    <Content Include="Resources\Red\Red40.png" />
+    <Content Include="Resources\Yellow\Yellow40.png" />
+    <Content Include="Resources\Blue\Blue.ico" />
+    <Content Include="Resources\Green\Green.ico" />
+    <Content Include="Resources\Purple\Purple.ico" />
+    <Content Include="Resources\Red\Red.ico" />
+    <Content Include="Resources\Yellow\Yellow.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

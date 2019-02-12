@@ -55,30 +55,30 @@ namespace LabelsForWindows {
 
             var menuGreen = new ToolStripMenuItem {
                 Text = "Green",
-                Image = Properties.Resources.Green32x32
+                Image = Properties.Resources.Green16
             };
 
             var menuYellow = new ToolStripMenuItem {
                 Text = "Yellow",
-                Image = Properties.Resources.Yellow32x32
+                Image = Properties.Resources.Yellow16
             };
 
             var menuRed = new ToolStripMenuItem
             {
                 Text = "Red",
-                Image = Properties.Resources.Red32x32
+                Image = Properties.Resources.Red16
             };
 
             var menuPurple = new ToolStripMenuItem
             {
                 Text = "Purple",
-                Image = Properties.Resources.Purple32x32
+                Image = Properties.Resources.Purple16
             };
 
             var menuBlue = new ToolStripMenuItem
             {
                 Text = "Blue",
-                Image = Properties.Resources.Blue32x32
+                Image = Properties.Resources.Blue16
             };
 
             var menuNone = new ToolStripMenuItem {

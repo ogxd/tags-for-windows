@@ -118,34 +118,124 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Blue32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Blue32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Blue\Blue.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BlueIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BlueIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Blue16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Blue\Blue16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Green32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Green32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Blue20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Blue\Blue20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GreenIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GreenIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Blue24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Blue\Blue24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Purple32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Purple32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Blue28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Blue\Blue28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PurpleIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PurpleIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Blue32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Blue\Blue32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Red32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Red32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Blue36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Blue\Blue36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="RedIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RedIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Blue40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Blue\Blue40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Yellow32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Yellow32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Green\Green.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="YellowIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\YellowIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Green16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Green\Green16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Green\Green20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Green\Green24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Green\Green28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Green\Green32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Green\Green36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Green\Green40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Purple" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Purple\Purple.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Purple16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Purple\Purple16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Purple20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Purple\Purple20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Purple24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Purple\Purple24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Purple28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Purple\Purple28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Purple32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Purple\Purple32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Purple36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Purple\Purple36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Purple40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Purple\Purple40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Red\Red.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Red\Red16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Red\Red20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Red\Red24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Red\Red28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Red\Red32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Red\Red36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Red\Red40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yellow\Yellow.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yellow\Yellow16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yellow\Yellow20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yellow\Yellow24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yellow\Yellow28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yellow\Yellow32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yellow\Yellow36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yellow\Yellow40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
