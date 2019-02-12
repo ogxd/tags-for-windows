@@ -5,6 +5,7 @@ using SharpShell.Attributes;
 using SharpShell.SharpContextMenu;
 using System.Linq;
 using System.Drawing;
+using LabelsForWindows.Properties;
 
 namespace LabelsForWindows {
 
@@ -17,28 +18,17 @@ namespace LabelsForWindows {
 
         protected override bool CanShowMenu() {
            
-            if (SelectedItemPaths.Count() == 1)
-            {
+            if (SelectedItemPaths.Count() >= 1) {
                 this.UpdateMenu();
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         protected override ContextMenuStrip CreateMenu() {
-
             menu.Items.Clear();
-            FileAttributes attr = File.GetAttributes(SelectedItemPaths.First());
-
-            if (attr.HasFlag(FileAttributes.Directory))  {
-                this.createSubMenus();
-            } else {
-                this.createSubMenus();
-            }
-
+            this.createSubMenus();
             return menu;
         }
 
@@ -55,30 +45,27 @@ namespace LabelsForWindows {
 
             var menuGreen = new ToolStripMenuItem {
                 Text = "Green",
-                Image = Properties.Resources.Green16
+                Image = GetBitmap("Green")
             };
 
             var menuYellow = new ToolStripMenuItem {
                 Text = "Yellow",
-                Image = Properties.Resources.Yellow16
+                Image = GetBitmap("Yellow")
             };
 
-            var menuRed = new ToolStripMenuItem
-            {
+            var menuRed = new ToolStripMenuItem {
                 Text = "Red",
-                Image = Properties.Resources.Red16
+                Image = GetBitmap("Red")
             };
 
-            var menuPurple = new ToolStripMenuItem
-            {
+            var menuPurple = new ToolStripMenuItem {
                 Text = "Purple",
-                Image = Properties.Resources.Purple16
+                Image = GetBitmap("Purple")
             };
 
-            var menuBlue = new ToolStripMenuItem
-            {
+            var menuBlue = new ToolStripMenuItem {
                 Text = "Blue",
-                Image = Properties.Resources.Blue16
+                Image = GetBitmap("Blue")
             };
 
             var menuNone = new ToolStripMenuItem {
@@ -107,14 +94,36 @@ namespace LabelsForWindows {
             foreach (string path in SelectedItemPaths) {
                 Manager.AssignIcon(path, icon);
             }
-            Manager.Refresh();
+            Extensions.RefreshExplorer();
         }
 
         private void unassignIcon() {
             foreach (string path in SelectedItemPaths) {
                 Manager.UnassignIcon(path);
             }
-            Manager.Refresh();
+            Extensions.RefreshExplorer();
+        }
+
+        public static Bitmap GetBitmap(string color) {
+            if (Extensions.Dpi > 0.96f * 250 - 1) {
+                return (Bitmap)Resources.ResourceManager.GetObject(color + "40", Resources.Culture);
+            }
+            if (Extensions.Dpi > 0.96f * 225 - 1) {
+                return (Bitmap)Resources.ResourceManager.GetObject(color + "36", Resources.Culture);
+            }
+            if (Extensions.Dpi > 0.96f * 200 - 1) {
+                return (Bitmap)Resources.ResourceManager.GetObject(color + "32", Resources.Culture);
+            }
+            if (Extensions.Dpi > 0.96f * 175 - 1) {
+                return (Bitmap)Resources.ResourceManager.GetObject(color + "28", Resources.Culture);
+            }
+            if (Extensions.Dpi > 0.96f * 150 - 1) {
+                return (Bitmap)Resources.ResourceManager.GetObject(color + "24", Resources.Culture);
+            }
+            if (Extensions.Dpi > 0.96f * 125 - 1) {
+                return (Bitmap)Resources.ResourceManager.GetObject(color + "20", Resources.Culture);
+            }
+            return (Bitmap)Resources.ResourceManager.GetObject(color + "16", Resources.Culture);
         }
     }
 }
