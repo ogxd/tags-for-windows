@@ -9,17 +9,17 @@ namespace LabelsForWindows {
 
     public static class Manager {
 
-        const string CACHE = @"C:\Users\lan pc\Downloads\rufus_files\cache.txt";
+        private static string _CachePath = Environment.ExpandEnvironmentVariables(@"%tmp%\LabelsForWindows.cache");
 
         public static void AssignIcon(string file, string icon) {
             file = file.ToLower().Replace(@"/", @"\").Replace(@"\\", @"\");
             string[] lines = null;
-            if (File.Exists(CACHE)) {
-                lines = File.ReadAllLines(CACHE);
+            if (File.Exists(_CachePath)) {
+                lines = File.ReadAllLines(_CachePath);
                 for (int i = 0; i < lines.Length; i += 2) {
                     if (lines[i] == file) {
                         lines[i + 1] = icon;
-                        File.WriteAllLines(CACHE, lines.Where(x => !string.IsNullOrEmpty(x)));
+                        File.WriteAllLines(_CachePath, lines.Where(x => !string.IsNullOrEmpty(x)));
                         return;
                     }
                 }
@@ -27,14 +27,14 @@ namespace LabelsForWindows {
             } else {
                 lines = new string[] { file, icon };
             }
-            File.WriteAllLines(CACHE, lines.Where(x => !string.IsNullOrEmpty(x)));
+            File.WriteAllLines(_CachePath, lines.Where(x => !string.IsNullOrEmpty(x)));
         }
 
         public static void UnassignIcon(string file) {
             file = file.ToLower().Replace(@"/", @"\").Replace(@"\\", @"\");
             string[] lines = null;
-            if (File.Exists(CACHE)) {
-                lines = File.ReadAllLines(CACHE);
+            if (File.Exists(_CachePath)) {
+                lines = File.ReadAllLines(_CachePath);
                 for (int i = 0; i < lines.Length; i += 2) {
                     if (lines[i] == file) {
                         lines[i] = null;
@@ -42,7 +42,7 @@ namespace LabelsForWindows {
                         break;
                     }
                 }
-                File.WriteAllLines(CACHE, lines.Where(x => !string.IsNullOrEmpty(x)));
+                File.WriteAllLines(_CachePath, lines.Where(x => !string.IsNullOrEmpty(x)));
             }
         }
 
@@ -54,8 +54,8 @@ namespace LabelsForWindows {
             file = file.ToLower().Replace(@"/", @"\").Replace(@"\\", @"\");
             if (_CachedLines == null || DateTime.UtcNow > _LastUpdate.AddSeconds(2)) {
                 _LastUpdate = DateTime.UtcNow;
-                if (File.Exists(CACHE)) {
-                    _CachedLines = File.ReadAllLines(CACHE);
+                if (File.Exists(_CachePath)) {
+                    _CachedLines = File.ReadAllLines(_CachePath);
                 } else {
                     return null;
                 }
