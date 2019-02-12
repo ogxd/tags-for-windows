@@ -65,6 +65,9 @@
     <Compile Include="ContextMenu.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Manager.cs" />
+    <Compile Include="OverlayIconYellow.cs" />
+    <Compile Include="OverlayIconPurple.cs" />
+    <Compile Include="OverlayIconBlue.cs" />
     <Compile Include="OverlayIconGreen.cs" />
     <Compile Include="OverlayIconRed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
