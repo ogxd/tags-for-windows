@@ -1,25 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace LabelsForWindows {
 
     public static class Manager {
 
-        private static string _CachePath = Environment.ExpandEnvironmentVariables(@"%tmp%\LabelsForWindows.cache");
+        private static string _CachePath;
+        public static string CachePath {
+            get {
+                if (string.IsNullOrEmpty(_CachePath)) {
+                    string dir = Environment.ExpandEnvironmentVariables(@"%appdata%\LabelsForWindows");
+                    Directory.CreateDirectory(dir);
+                    _CachePath = dir + @"\cache.db";
+                }
+                return _CachePath;
+            }
+        }
 
         public static void AssignIcon(string file, string icon) {
             file = file.ToLower().Replace(@"/", @"\").Replace(@"\\", @"\");
             string[] lines = null;
-            if (File.Exists(_CachePath)) {
-                lines = File.ReadAllLines(_CachePath);
+            if (File.Exists(CachePath)) {
+                lines = File.ReadAllLines(CachePath);
                 for (int i = 0; i < lines.Length; i += 2) {
                     if (lines[i] == file) {
                         lines[i + 1] = icon;
-                        File.WriteAllLines(_CachePath, lines.Where(x => !string.IsNullOrEmpty(x)));
+                        File.WriteAllLines(CachePath, lines.Where(x => !string.IsNullOrEmpty(x)));
                         return;
                     }
                 }
@@ -27,14 +34,14 @@ namespace LabelsForWindows {
             } else {
                 lines = new string[] { file, icon };
             }
-            File.WriteAllLines(_CachePath, lines.Where(x => !string.IsNullOrEmpty(x)));
+            File.WriteAllLines(CachePath, lines.Where(x => !string.IsNullOrEmpty(x)));
         }
 
         public static void UnassignIcon(string file) {
             file = file.ToLower().Replace(@"/", @"\").Replace(@"\\", @"\");
             string[] lines = null;
-            if (File.Exists(_CachePath)) {
-                lines = File.ReadAllLines(_CachePath);
+            if (File.Exists(CachePath)) {
+                lines = File.ReadAllLines(CachePath);
                 for (int i = 0; i < lines.Length; i += 2) {
                     if (lines[i] == file) {
                         lines[i] = null;
@@ -42,7 +49,7 @@ namespace LabelsForWindows {
                         break;
                     }
                 }
-                File.WriteAllLines(_CachePath, lines.Where(x => !string.IsNullOrEmpty(x)));
+                File.WriteAllLines(CachePath, lines.Where(x => !string.IsNullOrEmpty(x)));
             }
         }
 
@@ -54,8 +61,8 @@ namespace LabelsForWindows {
             file = file.ToLower().Replace(@"/", @"\").Replace(@"\\", @"\");
             if (_CachedLines == null || DateTime.UtcNow > _LastUpdate.AddSeconds(2)) {
                 _LastUpdate = DateTime.UtcNow;
-                if (File.Exists(_CachePath)) {
-                    _CachedLines = File.ReadAllLines(_CachePath);
+                if (File.Exists(CachePath)) {
+                    _CachedLines = File.ReadAllLines(CachePath);
                 } else {
                     return null;
                 }
@@ -66,13 +73,6 @@ namespace LabelsForWindows {
                 }
             }
             return null;
-        }
-
-        [System.Runtime.InteropServices.DllImport("Shell32.dll")]
-        private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
-
-        public static void Refresh() {
-            SHChangeNotify(0x8000000, 0x1000, IntPtr.Zero, IntPtr.Zero);
         }
     }
 }
