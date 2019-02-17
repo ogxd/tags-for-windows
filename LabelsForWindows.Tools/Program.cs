@@ -10,7 +10,6 @@ namespace LabelsForWindows.Tools {
             Console.WriteLine("--- LabelsForWindows.Tools ---");
             Process(args);
             Console.WriteLine("------------------------------");
-            Console.ReadKey();
         }
 
         private static bool Process(string[] args) {
