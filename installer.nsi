@@ -1,8 +1,10 @@
+!define VERSION "1.0"
+
 ; The name of the installer
 Name "Labels for Windows"
 
 ; The file to write
-OutFile "labels-for-windows.exe"
+OutFile "LabelsForWindows-${VERSION}-win64.exe"
 
 ; The default installation directory
 InstallDir "$PROGRAMFILES\Labels for Windows"
@@ -25,7 +27,7 @@ UninstPage instfiles
 Section "Labels for Windows (required)"
 
   SectionIn RO
-  
+
   ; Set output path to the installation directory.
   SetOutPath $INSTDIR
   
@@ -61,3 +63,4 @@ Section "Uninstall"
   RMDir /r "$INSTDIR"
 
 SectionEnd
+
