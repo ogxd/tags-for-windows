@@ -1,5 +1,5 @@
-# Labels-For-Windows
-MacOS style labels (or tags) for Windows !
+# Labels For Windows
+🟢🟠🔴🟣🔵 MacOS style labels for Windows !
 
 # Todo
 - Make it work accross multiple Windows marchines (NAS or USB drive for example) 
