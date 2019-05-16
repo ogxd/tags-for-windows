@@ -31,11 +31,11 @@ Section "Labels for Windows (required)"
   ; Set output path to the installation directory.
   SetOutPath $INSTDIR
   
-  File "LabelsForWindows.Tools\bin\LabelsForWindows.Tools.exe"
+  File "Tools\ComRegTool.exe"
   File "LabelsForWindows\bin\LabelsForWindows.dll"
   File "LabelsForWindows\bin\SharpShell.dll"
 
-  Exec '"$INSTDIR\LabelsForWindows.Tools.exe" install register "$INSTDIR\LabelsForWindows.dll"'
+  Exec '"$INSTDIR\ComRegTool.exe" install register "$INSTDIR\LabelsForWindows.dll"'
 
   ; Write the installation path into the registry
   WriteRegStr HKLM "SOFTWARE\Labels for Windows" "Install_Dir" "$INSTDIR"
@@ -56,7 +56,7 @@ Section "Uninstall"
   DeleteRegKey HKLM "SOFTWARE\Labels for Windows"
 
   ; Unregister COM server
-  ExecWait '"$INSTDIR\LabelsForWindows.Tools.exe" uninstall unregister "$INSTDIR\LabelsForWindows.dll"'
+  ExecWait '"$INSTDIR\ComRegTool.exe" uninstall unregister "$INSTDIR\LabelsForWindows.dll"'
 
   ; Remove directories used
   RMDir "$SMPROGRAMS\Labels for Windows"
