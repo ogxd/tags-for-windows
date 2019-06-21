@@ -8,8 +8,8 @@
     <ProjectGuid>{31EFBD02-1FCC-4EC6-A7F3-5A04BE4AE806}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LabelsForWindows</RootNamespace>
-    <AssemblyName>LabelsForWindows</AssemblyName>
+    <RootNamespace>TagsForWindows</RootNamespace>
+    <AssemblyName>TagsForWindows</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
@@ -48,6 +48,9 @@
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiteDB">
+      <HintPath>..\Tools\LiteDB.dll</HintPath>
+    </Reference>
     <Reference Include="SharpShell">
       <HintPath>..\Tools\SharpShell.dll</HintPath>
     </Reference>

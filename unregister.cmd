@@ -1,2 +1,2 @@
 set path=%~dp0
-"%path%Tools\ComRegTool.exe" uninstall unregister "%path%LabelsForWindows\bin\LabelsForWindows.dll"
+"%path%Tools\ComRegTool.exe" uninstall unregister "%path%TagsForWindows\bin\TagsForWindows.dll"

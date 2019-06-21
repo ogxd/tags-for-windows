@@ -4,10 +4,10 @@ using SharpShell.Attributes;
 using SharpShell.Interop;
 using SharpShell.SharpIconOverlayHandler;
 
-namespace LabelsForWindows {
+namespace TagsForWindows {
 
     [ComVisible(true)]
-    [RegistrationName("  LabelsForWindows_Yellow")]
+    [RegistrationName("  TagsForWindows_Yellow")]
     [Guid("a259c04f-ffa8-310b-864c-fe602840399b")]
     public class OverlayIconYellow : SharpIconOverlayHandler {
 
@@ -16,7 +16,7 @@ namespace LabelsForWindows {
         }
 
         protected override bool CanShowOverlay(string path, FILE_ATTRIBUTE attributes) {
-            return Manager.GetIcon(path) == "yellow";
+            return Manager.GetTag(path) == "yellow";
         }
 
         protected override System.Drawing.Icon GetOverlayIcon() {

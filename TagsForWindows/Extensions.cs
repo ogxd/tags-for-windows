@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace LabelsForWindows {
+namespace TagsForWindows {
 
     public static class Extensions {
 

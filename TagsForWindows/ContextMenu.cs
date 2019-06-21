@@ -5,9 +5,9 @@ using SharpShell.Attributes;
 using SharpShell.SharpContextMenu;
 using System.Linq;
 using System.Drawing;
-using LabelsForWindows.Properties;
+using TagsForWindows.Properties;
 
-namespace LabelsForWindows {
+namespace TagsForWindows {
 
     [ComVisible(true)]
     [COMServerAssociation(AssociationType.AllFiles)]
@@ -40,7 +40,8 @@ namespace LabelsForWindows {
         protected void createSubMenus() {
 
             var mainMenu = new ToolStripMenuItem {
-                Text = "Labels",
+                Text = "Tags...",
+                //Image = GetBitmap("")
             };
 
             var menuGreen = new ToolStripMenuItem {
@@ -92,14 +93,14 @@ namespace LabelsForWindows {
 
         private void assignIcon(string icon) {
             foreach (string path in SelectedItemPaths) {
-                Manager.AssignIcon(path, icon);
+                Manager.AssignTag(path, icon);
             }
             Extensions.RefreshExplorer();
         }
 
         private void unassignIcon() {
             foreach (string path in SelectedItemPaths) {
-                Manager.UnassignIcon(path);
+                Manager.UnassignTag(path);
             }
             Extensions.RefreshExplorer();
         }
