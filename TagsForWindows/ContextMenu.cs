@@ -73,11 +73,11 @@ namespace TagsForWindows {
                 Text = "None",
             };
 
-            menuGreen.Click += (sender, args) => assignIcon("green");
-            menuYellow.Click += (sender, args) => assignIcon("yellow");
-            menuRed.Click += (sender, args) => assignIcon("red");
-            menuPurple.Click += (sender, args) => assignIcon("purple");
-            menuBlue.Click += (sender, args) => assignIcon("blue");
+            menuGreen.Click += (sender, args) => assignIcon("Green");
+            menuYellow.Click += (sender, args) => assignIcon("Yellow");
+            menuRed.Click += (sender, args) => assignIcon("Red");
+            menuPurple.Click += (sender, args) => assignIcon("Purple");
+            menuBlue.Click += (sender, args) => assignIcon("Blue");
             menuNone.Click += (sender, args) => unassignIcon();
 
             mainMenu.DropDownItems.Add(menuGreen);
@@ -93,14 +93,14 @@ namespace TagsForWindows {
 
         private void assignIcon(string icon) {
             foreach (string path in SelectedItemPaths) {
-                Manager.AssignTag(path, icon);
+                Database.AssignTag(path, icon);
             }
             Extensions.RefreshExplorer();
         }
 
         private void unassignIcon() {
             foreach (string path in SelectedItemPaths) {
-                Manager.UnassignTag(path);
+                Database.UnassignTag(path);
             }
             Extensions.RefreshExplorer();
         }

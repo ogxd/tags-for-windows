@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using SharpShell.Attributes;
 using SharpShell.Interop;
 using SharpShell.SharpIconOverlayHandler;
+using TagsForWindows.Properties;
 
 namespace TagsForWindows {
 
@@ -15,12 +16,18 @@ namespace TagsForWindows {
             return 90;
         }
 
+        private string _lastPath;
+
         protected override bool CanShowOverlay(string path, FILE_ATTRIBUTE attributes) {
-            return Manager.GetTag(path) == "blue";
+            return Database.GetTag(path) == "Blue";
+            //Debug.Log($"CanShowOverlay path:{path}");
+            //return !string.IsNullOrEmpty(Database.GetTag(_lastPath = path));
         }
 
         protected override System.Drawing.Icon GetOverlayIcon() {
             return Properties.Resources.Blue;
+            //Debug.Log($"GetOverlayIcon lastPath:{_lastPath}");
+            //return (System.Drawing.Icon)Resources.ResourceManager.GetObject(_lastPath, Resources.Culture);
         }
     }
 }

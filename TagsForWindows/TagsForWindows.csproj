@@ -66,8 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextMenu.cs" />
+    <Compile Include="Debug.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Manager.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="OverlayIconYellow.cs" />
     <Compile Include="OverlayIconPurple.cs" />
     <Compile Include="OverlayIconBlue.cs" />
