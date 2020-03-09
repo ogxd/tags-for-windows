@@ -2,7 +2,7 @@
 
 MacOS style Tags for Windows ! 💚💛❤️💜💙
 
-![Screenshot](https://raw.githubusercontent.com/ogxd/tags-for-windows/master/Demo/screenshot.png | width=400)
+<img src="https://raw.githubusercontent.com/ogxd/tags-for-windows/master/Demo/screenshot.png" width="400" />
 
 # Usage
 Download and install the latest version in the release tab.
