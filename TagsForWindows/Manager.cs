@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ogx;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -37,28 +38,30 @@ namespace TagsForWindows {
 
         public static void AssignTag(string path, TagColor tag) {
 
-            //var dotUnderscore = new DotUnderscore();
-            //var entry = new Entry();
-            //var footerEntry = new FooterEntry();
-            //footerEntry.id = 2;
-            //footerEntry.size = 286;
-            //footerEntry.offset = 3810;
-            //dotUnderscore.entries = new Entry[] { entry, footerEntry };
-            //var attrHeader = new AttributesHeader();
-            //entry.data = attrHeader;
-            //var tagAttribute = new Ogx.Attribute();
-            //tagAttribute.name = "com.apple.metadata:_kMDItemUserTags\0";
-            //attrHeader.attributes.Add(tagAttribute);
-            //var bplist = new BinaryPropertyList();
-            //tagAttribute.value = bplist;
-            //var barray = new BinaryArray();
-            //bplist.property = barray;
-            //barray.properties = new BinaryProperty[1];
-            //barray.properties[0] = new BinaryStringASCII { value = tag.ToString() + "\n" + ((int)tag).ToString() };
+            var dotUnderscore = new DotUnderscore();
+            var entry = new Entry();
+            var footerEntry = new FooterEntry();
+            footerEntry.id = 2;
+            footerEntry.size = 286;
+            footerEntry.offset = 3810;
+            dotUnderscore.entries = new Entry[] { entry, footerEntry };
+            var attrHeader = new AttributesHeader();
+            entry.data = attrHeader;
+            var tagAttribute = new Ogx.Attribute();
+            tagAttribute.name = "com.apple.metadata:_kMDItemUserTags\0";
+            attrHeader.attributes.Add(tagAttribute);
+            var bplist = new BinaryPropertyList();
+            tagAttribute.value = bplist;
+            var barray = new BinaryArray();
+            bplist.property = barray;
+            barray.properties = new BinaryProperty[1];
+            barray.properties[0] = new BinaryStringASCII { value = tag.ToString() + "\n" + ((int)tag).ToString() };
 
-            //var bytes = BinaryHelper.Write(dotUnderscore);
+            var bytes = BinaryHelper.Write(dotUnderscore);
 
-            //File.WriteAllBytes(GetDotUnderscorePath(path), bytes);
+            string dotUnderscorePath = GetDotUnderscorePath(path);
+
+            File.WriteAllBytes(dotUnderscorePath, bytes);
         }
 
         public static void UnassignTag(string file) {
@@ -77,30 +80,30 @@ namespace TagsForWindows {
             if (string.IsNullOrEmpty(dotUnderscorePath))
                 return new TagAndLabel { color = TagColor.None, label = "None" };
 
-            //DotUnderscore dotUnderscore = BinaryHelper.Read<DotUnderscore>(dotUnderscorePath);
-            //Ogx.Attribute tagAttribute = (dotUnderscore.entries[0].data as AttributesHeader).attributes.Where(x => x.name == "com.apple.metadata:_kMDItemUserTags\0").FirstOrDefault();
+            DotUnderscore dotUnderscore = BinaryHelper.Read<DotUnderscore>(dotUnderscorePath);
+            Ogx.Attribute tagAttribute = (dotUnderscore.entries[0].data as AttributesHeader).attributes.Where(x => x.name == "com.apple.metadata:_kMDItemUserTags\0").FirstOrDefault();
 
-            //if (tagAttribute == null)
-            //{
-            //    Console.WriteLine("There are no tags attribute !");
-            //    return new TagAndLabel { color = TagColor.None, label = "None" };
-            //}
+            if (tagAttribute == null)
+            {
+                Console.WriteLine("There are no tags attribute !");
+                return new TagAndLabel { color = TagColor.None, label = "None" };
+            }
 
-            //var bplist = tagAttribute.value as BinaryPropertyList;
-            //var tagsArray = bplist.property as BinaryArray;
-            //if (tagsArray == null)
-            //{
-            //    return new TagAndLabel { color = TagColor.None, label = "None" };
-            //}
+            var bplist = tagAttribute.value as BinaryPropertyList;
+            var tagsArray = bplist.property as BinaryArray;
+            if (tagsArray == null)
+            {
+                return new TagAndLabel { color = TagColor.None, label = "None" };
+            }
 
-            //foreach (BinaryStringASCII binaryString in tagsArray.properties)
-            //{
-            //    var values = binaryString.value.Split('\n');
-            //    string tagName = values[0];
-            //    int tagColor = (values.Length > 1) ? int.Parse(values[1]) : 0;
+            foreach (BinaryStringASCII binaryString in tagsArray.properties)
+            {
+                var values = binaryString.value.Split('\n');
+                string tagName = values[0];
+                int tagColor = (values.Length > 1) ? int.Parse(values[1]) : 0;
 
-            //    return new TagAndLabel { color = (TagColor)tagColor, label = tagName };
-            //}
+                return new TagAndLabel { color = (TagColor)tagColor, label = tagName };
+            }
 
             return new TagAndLabel { color = TagColor.None, label = "None" };
         }

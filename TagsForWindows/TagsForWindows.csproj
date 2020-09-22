@@ -51,6 +51,9 @@
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotUnderscoreIO">
+      <HintPath>..\Tools\DotUnderscoreIO\DotUnderscoreIO.dll</HintPath>
+    </Reference>
     <Reference Include="SharpShell">
       <HintPath>..\Tools\SharpShell.dll</HintPath>
     </Reference>
