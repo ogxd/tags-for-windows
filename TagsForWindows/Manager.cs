@@ -38,6 +38,8 @@ namespace TagsForWindows {
 
         public static void AssignTag(string path, TagColor tag) {
 
+            Debug.Log("Assign tag : " + tag.ToString());
+
             var dotUnderscore = new DotUnderscore();
             var entry = new Entry();
             var footerEntry = new FooterEntry();
@@ -60,6 +62,8 @@ namespace TagsForWindows {
             var bytes = BinaryHelper.Write(dotUnderscore);
 
             string dotUnderscorePath = GetDotUnderscorePath(path);
+
+            Debug.Log("Dot underscore path : " +  dotUnderscorePath);
 
             File.WriteAllBytes(dotUnderscorePath, bytes);
         }
