@@ -32,8 +32,7 @@ Section "Tags for Windows (required)"
   SetOutPath $INSTDIR
   
   File "Tools\ComRegTool.exe"
-  File "TagsForWindows\bin\TagsForWindows.dll"
-  File "TagsForWindows\bin\SharpShell.dll"
+  File "TagsForWindows\bin\*"
 
   Exec '"$INSTDIR\ComRegTool.exe" install register "$INSTDIR\TagsForWindows.dll"'
 
