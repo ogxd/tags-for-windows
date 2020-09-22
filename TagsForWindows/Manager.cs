@@ -1,65 +1,109 @@
-﻿using LiteDB;
+﻿using Ogx;
 using System;
 using System.IO;
 using System.Linq;
 
 namespace TagsForWindows {
 
+    public enum TagColor
+    {
+        Orange = 7,
+        Red = 6,
+        Yellow = 5,
+        Blue = 4,
+        Purple = 3,
+        Green = 2,
+        Gray = 1,
+        None = 0,
+    }
+
     public static class Manager {
 
-        public static string GetDatabasePath(string file) {
-            return Environment.ExpandEnvironmentVariables(@"%appdata%\TagsForWindows\.tags");
+        private static string GetDotUnderscorePath(string path)
+        {
+            FileAttributes attr = File.GetAttributes(path);
+            if (attr.HasFlag(FileAttributes.Directory))
+            {
+                if (!Directory.Exists(path))
+                    return null;
+                return Path.Combine(Path.GetDirectoryName(path), "._" + new DirectoryInfo(path).Name);
+            }
+            else
+            {
+                if (!File.Exists(path))
+                    return null;
+                return Path.Combine(Path.GetDirectoryName(path), "._" + Path.GetFileName(path));
+            }
         }
 
-        public static LiteDatabase GetDatabase(string file) {
-            bool dbExits = File.Exists(file);
-            string dbPath = GetDatabasePath(file);
-            var db = new LiteDatabase(dbPath);
-            if (!dbExits) {
-                File.SetAttributes(dbPath, FileAttributes.Hidden);
-            }
-            return db;
-        }
+        public static void AssignTag(string path, TagColor tag) {
 
-        public static void AssignTag(string file, string tag) {
-            using (var db = GetDatabase(file)) {
-                var collection = db.GetCollection<TaggedFile>();
-                var result = collection.Find(x => x.file == file);
-                if (result.Count() > 0) {
-                    var taggedFile = result.First();
-                    taggedFile.tag = tag;
-                    collection.Update(taggedFile);
-                } else {
-                    var taggedFile = new TaggedFile {
-                        file = file,
-                        tag = tag,
-                    };
-                    collection.Insert(taggedFile);
-                }
-            }
+            var dotUnderscore = new DotUnderscore();
+            var entry = new Entry();
+            var footerEntry = new FooterEntry();
+            footerEntry.id = 2;
+            footerEntry.size = 286;
+            footerEntry.offset = 3810;
+            dotUnderscore.entries = new Entry[] { entry, footerEntry };
+            var attrHeader = new AttributesHeader();
+            entry.data = attrHeader;
+            var tagAttribute = new Ogx.Attribute();
+            tagAttribute.name = "com.apple.metadata:_kMDItemUserTags\0";
+            attrHeader.attributes.Add(tagAttribute);
+            var bplist = new BinaryPropertyList();
+            tagAttribute.value = bplist;
+            var barray = new BinaryArray();
+            bplist.property = barray;
+            barray.properties = new BinaryProperty[1];
+            barray.properties[0] = new BinaryStringASCII { value = tag.ToString() + "\n" + ((int)tag).ToString() };
+
+            var bytes = BinaryHelper.Write(dotUnderscore);
+
+            File.WriteAllBytes(GetDotUnderscorePath(path), bytes);
         }
 
         public static void UnassignTag(string file) {
-            using (var db = GetDatabase(file)) {
-                var collection = db.GetCollection<TaggedFile>();
-                collection.Delete(x => x.file == file);
-            }
+            //using (var db = GetDatabase(file)) {
+            //    var collection = db.GetCollection<TaggedFile>();
+            //    collection.Delete(x => x.file == file);
+            //}
+
+            // todo
         }
 
-        public static string GetTag(string file) {
-            using (var db = GetDatabase(file)) {
-                var result = db.GetCollection<TaggedFile>().Find(x => x.file == file);
-                if (result.Count() > 0) {
-                    return result.First().tag;
-                } else {
-                    return null;
-                }
-            }
-        }
+        public static (TagColor color, string label) GetTag(string path) {
 
-        public class TaggedFile {
-            public string file { get; set; }
-            public string tag { get; set; }
+            string dotUnderscorePath = GetDotUnderscorePath(path);
+            
+            if (string.IsNullOrEmpty(dotUnderscorePath))
+                return (TagColor.None, "None");
+
+            DotUnderscore dotUnderscore = BinaryHelper.Read<DotUnderscore>(dotUnderscorePath);
+            Ogx.Attribute tagAttribute = (dotUnderscore.entries[0].data as AttributesHeader).attributes.Where(x => x.name == "com.apple.metadata:_kMDItemUserTags\0").FirstOrDefault();
+
+            if (tagAttribute == null)
+            {
+                Console.WriteLine("There are no tags attribute !");
+                return (TagColor.None, "None");
+            }
+
+            var bplist = tagAttribute.value as BinaryPropertyList;
+            var tagsArray = bplist.property as BinaryArray;
+            if (tagsArray == null)
+            {
+                return (TagColor.None, "None");
+            }
+
+            foreach (BinaryStringASCII binaryString in tagsArray.properties)
+            {
+                var values = binaryString.value.Split('\n');
+                string tagName = values[0];
+                int tagColor = (values.Length > 1) ? int.Parse(values[1]) : 0;
+
+                return ((TagColor)tagColor, tagName);
+            }
+
+            return (TagColor.None, "None");
         }
     }
 }

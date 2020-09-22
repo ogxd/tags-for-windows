@@ -16,7 +16,7 @@ namespace TagsForWindows {
         }
 
         protected override bool CanShowOverlay(string path, FILE_ATTRIBUTE attributes) {
-            return Manager.GetTag(path) == "yellow";
+            return Manager.GetTag(path).color == TagColor.Yellow;
         }
 
         protected override System.Drawing.Icon GetOverlayIcon() {

@@ -40,7 +40,7 @@ namespace TagsForWindows {
         protected void createSubMenus() {
 
             var mainMenu = new ToolStripMenuItem {
-                Text = "Tags...",
+                Text = $"Tags... [{Manager.GetTag(SelectedItemPaths.First()).label}]",
                 //Image = GetBitmap("")
             };
 
@@ -73,11 +73,11 @@ namespace TagsForWindows {
                 Text = "None",
             };
 
-            menuGreen.Click += (sender, args) => assignIcon("green");
-            menuYellow.Click += (sender, args) => assignIcon("yellow");
-            menuRed.Click += (sender, args) => assignIcon("red");
-            menuPurple.Click += (sender, args) => assignIcon("purple");
-            menuBlue.Click += (sender, args) => assignIcon("blue");
+            menuGreen.Click += (sender, args) => assignIcon(TagColor.Green);
+            menuYellow.Click += (sender, args) => assignIcon(TagColor.Yellow);
+            menuRed.Click += (sender, args) => assignIcon(TagColor.Red);
+            menuPurple.Click += (sender, args) => assignIcon(TagColor.Purple);
+            menuBlue.Click += (sender, args) => assignIcon(TagColor.Blue);
             menuNone.Click += (sender, args) => unassignIcon();
 
             mainMenu.DropDownItems.Add(menuGreen);
@@ -91,9 +91,9 @@ namespace TagsForWindows {
             menu.Items.Add(mainMenu);
         }
 
-        private void assignIcon(string icon) {
+        private void assignIcon(TagColor tag) {
             foreach (string path in SelectedItemPaths) {
-                Manager.AssignTag(path, icon);
+                Manager.AssignTag(path, tag);
             }
             Extensions.RefreshExplorer();
         }
