@@ -1,0 +1,44 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+using System.Reflection;
+ 
+<#
+ string prefix = this.Host.ResolvePath("");
+ Version version = GetVersionAndIncrement(prefix);
+#>
+
+[assembly: AssemblyVersion("<#= version.Major #>.<#= version.Minor #>.<#= version.Build #>.<#= version.Revision  #>")]
+
+<#+
+
+static Version GetVersionAndIncrement(string prefix) {
+
+    string file = prefix + "\\Version.txt";
+
+    Version version = GetVersionNumber(file);
+    Version versionNext = new Version(version.Major, version.Minor, version.Build, version.Revision + 1);
+    SaveVersion(file, versionNext);
+    return version;
+}
+
+static Version GetVersionNumber(string file)
+{
+    if (!System.IO.File.Exists(file))
+    {
+        return new Version(1, 0, 0, 0);
+    }
+
+    if (!Version.TryParse(System.IO.File.ReadAllText(file), out Version version))
+    {
+        return new Version(1, 0, 0, 0);
+    }
+
+    return version;
+}
+
+static void SaveVersion(string file, Version version)
+{
+    System.IO.File.WriteAllText(file, version.ToString());
+}
+
+#>
