@@ -21,24 +21,13 @@ namespace TagsForWindows {
 
         private static string GetDotUnderscorePath(string path)
         {
-            FileAttributes attr = File.GetAttributes(path);
-            if (attr.HasFlag(FileAttributes.Directory))
-            {
-                if (!Directory.Exists(path))
-                    return null;
-                return Path.Combine(Path.GetDirectoryName(path), "._" + new DirectoryInfo(path).Name);
-            }
-            else
-            {
-                if (!File.Exists(path))
-                    return null;
-                return Path.Combine(Path.GetDirectoryName(path), "._" + Path.GetFileName(path));
-            }
+            string filename = Path.GetFileName(path);
+            if (filename.StartsWith("._"))
+                return null;
+            return Path.Combine(Path.GetDirectoryName(path), "._" + filename);
         }
 
         public static void AssignTag(string path, TagColor tag) {
-
-            Debug.Log("Assign tag : " + tag.ToString());
 
             var dotUnderscore = new DotUnderscore();
             var entry = new Entry();
@@ -63,9 +52,9 @@ namespace TagsForWindows {
 
             string dotUnderscorePath = GetDotUnderscorePath(path);
 
-            Debug.Log("Dot underscore path : " +  dotUnderscorePath);
-
             File.WriteAllBytes(dotUnderscorePath, bytes);
+
+            File.SetAttributes(dotUnderscorePath, FileAttributes.Hidden);
         }
 
         public static void UnassignTag(string file) {
@@ -80,8 +69,13 @@ namespace TagsForWindows {
         public static TagAndLabel GetTag(string path) {
 
             string dotUnderscorePath = GetDotUnderscorePath(path);
-            
+
+            Debug.Log("Get tag : " + dotUnderscorePath);
+
             if (string.IsNullOrEmpty(dotUnderscorePath))
+                return new TagAndLabel { color = TagColor.None, label = "None" };
+
+            if (!File.Exists(dotUnderscorePath))
                 return new TagAndLabel { color = TagColor.None, label = "None" };
 
             DotUnderscore dotUnderscore = BinaryHelper.Read<DotUnderscore>(dotUnderscorePath);
@@ -89,7 +83,6 @@ namespace TagsForWindows {
 
             if (tagAttribute == null)
             {
-                Console.WriteLine("There are no tags attribute !");
                 return new TagAndLabel { color = TagColor.None, label = "None" };
             }
 
@@ -105,6 +98,8 @@ namespace TagsForWindows {
                 var values = binaryString.value.Split('\n');
                 string tagName = values[0];
                 int tagColor = (values.Length > 1) ? int.Parse(values[1]) : 0;
+
+                Debug.Log("Found tag : " + tagColor + ", " + tagName);
 
                 return new TagAndLabel { color = (TagColor)tagColor, label = tagName };
             }
