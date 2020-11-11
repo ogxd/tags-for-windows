@@ -1,5 +1,6 @@
 ﻿using Ogx;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -27,43 +28,172 @@ namespace TagsForWindows {
             return Path.Combine(Path.GetDirectoryName(path), "._" + filename);
         }
 
-        public static void AssignTag(string path, TagColor tag) {
+        public static void AssignTag(string path, TagColor tagColor, string tagName) {
 
-            var dotUnderscore = new DotUnderscore();
-            var entry = new Entry();
-            var footerEntry = new FooterEntry();
-            footerEntry.id = 2;
-            footerEntry.size = 286;
-            footerEntry.offset = 3810;
-            dotUnderscore.entries = new Entry[] { entry, footerEntry };
-            var attrHeader = new AttributesHeader();
-            entry.data = attrHeader;
-            var tagAttribute = new Ogx.Attribute();
-            tagAttribute.name = "com.apple.metadata:_kMDItemUserTags\0";
-            attrHeader.attributes.Add(tagAttribute);
-            var bplist = new BinaryPropertyList();
-            tagAttribute.value = bplist;
-            var barray = new BinaryArray();
-            bplist.property = barray;
-            barray.properties = new BinaryProperty[1];
-            barray.properties[0] = new BinaryStringASCII { value = tag.ToString() + "\n" + ((int)tag).ToString() };
+            try
+            {
+                if (string.IsNullOrEmpty(tagName))
+                    tagName = tagColor.ToString();
 
-            var bytes = BinaryHelper.Write(dotUnderscore);
+                DotUnderscore dotUnderscore;
+
+                string dotUnderscorePath = GetDotUnderscorePath(path);
+
+                if (File.Exists(dotUnderscorePath))
+                    dotUnderscore = BinaryHelper.Read<DotUnderscore>(dotUnderscorePath);
+                else
+                    dotUnderscore = new DotUnderscore();
+
+                Debug.Log("Assign tag : " + tagName);
+
+                BinaryArray tagsArray = dotUnderscore.GetOrAddTagsArray();
+
+                string tagString = $"{tagName}\n{(int)tagColor}";
+
+                foreach (BinaryStringASCII binaryString in tagsArray.properties)
+                {
+                    var values = binaryString.value.Split('\n');
+                    if (values.Length < 1)
+                        continue;
+
+                    TagColor presentTagColor = (TagColor)int.Parse(values[1]);
+
+                    if (presentTagColor == tagColor)
+                    {
+                        binaryString.value = tagString;
+                        goto tagSet;
+                    }
+                }
+
+                BinaryStringASCII newBinaryString = new BinaryStringASCII();
+                newBinaryString.value = tagString;
+                tagsArray.properties = tagsArray.properties.Add(newBinaryString);
+
+                tagSet:;
+
+                var bytes = BinaryHelper.Write(dotUnderscore);
+
+                FileInfo myFile = new FileInfo(dotUnderscorePath);
+
+                using (FileStream fs = new FileStream(dotUnderscorePath, FileMode.OpenOrCreate))
+                {
+                    fs.Write(bytes, 0, bytes.Length);
+                    fs.Flush();
+                    fs.SetLength(fs.Position);
+                }
+
+                File.SetAttributes(dotUnderscorePath, FileAttributes.Hidden);
+
+            }
+            catch (Exception ex)
+            {
+                Debug.Log("ERROR : " + ex);
+            }
+        }
+
+        public static void UnassignAllTags(string path)
+        {
+            string dotUnderscorePath = GetDotUnderscorePath(path);
+
+            if (File.Exists(dotUnderscorePath))
+                File.Delete(dotUnderscorePath);
+        }
+
+        public static bool UnassignTag(string path, TagColor tagColor) {
+
+            DotUnderscore dotUnderscore;
 
             string dotUnderscorePath = GetDotUnderscorePath(path);
 
-            File.WriteAllBytes(dotUnderscorePath, bytes);
+            if (File.Exists(dotUnderscorePath))
+                dotUnderscore = BinaryHelper.Read<DotUnderscore>(dotUnderscorePath);
+            else
+                return false;
 
-            File.SetAttributes(dotUnderscorePath, FileAttributes.Hidden);
+            BinaryArray tagsArray = dotUnderscore.GetOrAddTagsArray();
+
+            bool tagsModified = false;
+
+            foreach (BinaryStringASCII binaryString in tagsArray.properties)
+            {
+                var values = binaryString.value.Split('\n');
+                if (values.Length < 1)
+                    continue;
+
+                TagColor presentTagColor = (TagColor)int.Parse(values[1]);
+
+                if (presentTagColor == tagColor)
+                {
+                    binaryString.value = null;
+                    tagsModified = true;
+                }
+            }
+
+            if (tagsModified)
+            {
+                tagsArray.properties = tagsArray.properties.Where(x => (x as BinaryStringASCII)?.value != null).ToArray();
+
+                var bytes = BinaryHelper.Write(dotUnderscore);
+
+                File.WriteAllBytes(dotUnderscorePath, bytes);
+                File.SetAttributes(dotUnderscorePath, FileAttributes.Hidden);
+
+                return true;
+            }
+
+            return false;
         }
 
-        public static void UnassignTag(string file) {
-            //using (var db = GetDatabase(file)) {
-            //    var collection = db.GetCollection<TaggedFile>();
-            //    collection.Delete(x => x.file == file);
-            //}
+        public static IEnumerable<TagAndLabel> GetTags(string path)
+        {
+            string dotUnderscorePath = GetDotUnderscorePath(path);
 
-            // todo
+            Debug.Log("Get tag : " + dotUnderscorePath);
+
+            if (string.IsNullOrEmpty(dotUnderscorePath))
+                yield break;
+
+            if (!File.Exists(dotUnderscorePath))
+                yield break;
+
+            DotUnderscore dotUnderscore = BinaryHelper.Read<DotUnderscore>(dotUnderscorePath);
+
+            Ogx.Attribute tagsAttribute = null;
+
+            if (dotUnderscore.entries != null && dotUnderscore.entries.Length > 0)
+            {
+                tagsAttribute = (dotUnderscore.entries[0].data as AttributesHeader)?
+                    .attributes?
+                    .Where(x => x.name == "com.apple.metadata:_kMDItemUserTags\0")
+                    .FirstOrDefault();
+            }
+
+            if (tagsAttribute == null)
+                yield break;
+
+            var bplist = tagsAttribute.value as BinaryPropertyList;
+            var tagsArray = bplist.property as BinaryArray;
+
+            if (tagsArray == null)
+                yield break;
+
+            Debug.Log("ASSIGNED TAGS = " + tagsArray.properties.Length);
+
+            foreach (BinaryStringASCII binaryString in tagsArray.properties)
+            {
+                var values = binaryString.value.Split('\n');
+                if (values.Length < 1)
+                    continue;
+
+                string tagName = values[0];
+                int tagColor = int.Parse(values[1]);
+
+                Debug.Log("Found tag : " + tagColor + ", " + tagName);
+
+                yield return new TagAndLabel { color = (TagColor)tagColor, label = tagName };
+            }
+
+            yield break;
         }
 
         public static TagAndLabel GetTag(string path) {

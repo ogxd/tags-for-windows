@@ -39,10 +39,24 @@ namespace TagsForWindows {
 
         protected void createSubMenus() {
 
-            var mainMenu = new ToolStripMenuItem {
-                Text = $"Tags... [{Manager.GetTag(SelectedItemPaths.First()).label}]",
-                //Image = GetBitmap("")
-            };
+            var mainMenu = new ToolStripMenuItem();
+
+            foreach (var tagAndLabel in Manager.GetTags(SelectedItemPaths.First()))
+            {
+                if (string.IsNullOrEmpty(mainMenu.Text))
+                {
+                    mainMenu.Image = GetBitmap(tagAndLabel.color.ToString());
+                }
+                else
+                {
+                    mainMenu.Text += ", ";
+                }
+                mainMenu.Text += tagAndLabel.label;
+            }
+
+            if (string.IsNullOrEmpty(mainMenu.Text)) {
+                mainMenu.Text = "Tags...";
+            }
 
             var menuGreen = new ToolStripMenuItem {
                 Text = "Green",
@@ -93,14 +107,14 @@ namespace TagsForWindows {
 
         private void assignIcon(TagColor tag) {
             foreach (string path in SelectedItemPaths) {
-                Manager.AssignTag(path, tag);
+                Manager.AssignTag(path, tag, null);
             }
             Extensions.RefreshExplorer();
         }
 
         private void unassignIcon() {
             foreach (string path in SelectedItemPaths) {
-                Manager.UnassignTag(path);
+                Manager.UnassignAllTags(path);
             }
             Extensions.RefreshExplorer();
         }

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Ogx;
+using System;
 using System.Drawing;
+using System.Linq;
 
 namespace TagsForWindows {
 
@@ -39,6 +41,48 @@ namespace TagsForWindows {
 
         public static void RefreshExplorer() {
             SHChangeNotify(0x8000000, 0x1000, IntPtr.Zero, IntPtr.Zero);
+        }
+
+        public static BinaryArray GetOrAddTagsArray(this DotUnderscore dotUnderscore)
+        {
+            const string TAG_KEYWORD = "com.apple.metadata:_kMDItemUserTags\0";
+
+            Ogx.Attribute tagsAttribute = null;
+
+            if (dotUnderscore.entries != null && dotUnderscore.entries.Length > 0)
+            {
+                tagsAttribute = (dotUnderscore.entries[0].data as AttributesHeader)?
+                    .attributes?
+                    .Where(x => x.name == TAG_KEYWORD)
+                    .FirstOrDefault();
+            }
+
+            if (tagsAttribute == null)
+            {
+                var entry = new Entry(9u);
+                var footerEntry = new Entry(2u);
+                footerEntry.id = 2;
+                footerEntry.size = 286;
+                footerEntry.offset = 3810;
+                dotUnderscore.entries = new Entry[] { entry, footerEntry };
+                var attrHeader = new AttributesHeader();
+                entry.data = attrHeader;
+                tagsAttribute = new Ogx.Attribute();
+                tagsAttribute.name = TAG_KEYWORD;
+                attrHeader.attributes.Add(tagsAttribute);
+            }
+
+            BinaryArray tagsArray = (tagsAttribute.value as BinaryPropertyList)?.property as BinaryArray;
+
+            if (tagsArray == null)
+            {
+                var bplist = new BinaryPropertyList();
+                tagsAttribute.value = bplist;
+                tagsArray = new BinaryArray();
+                bplist.property = tagsArray;
+            }
+
+            return tagsArray;
         }
     }
 }

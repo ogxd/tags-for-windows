@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TagsForWindows</RootNamespace>
     <AssemblyName>TagsForWindows</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
     </SccProjectName>
@@ -57,8 +57,9 @@
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotUnderscoreIO">
-      <HintPath>..\Tools\DotUnderscoreIO\DotUnderscoreIO.dll</HintPath>
+    <Reference Include="DotUnderscoreIO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\DotUnderscoreIO\DotUnderscoreIO.dll</HintPath>
     </Reference>
     <Reference Include="SharpShell">
       <HintPath>..\Tools\SharpShell.dll</HintPath>
